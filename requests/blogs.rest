@@ -1,0 +1,14 @@
+GET http://localhost:3001/api/blogs
+
+###
+
+POST http://localhost:3001/api/blogs 
+Content-Type: application/json
+
+{
+  "author": "Wes Bos",
+  "title": "Data URLs and Pool in your URL",
+  "url": "https://wesbos.com/pool-in-your-url",
+  "upvotes": 4
+}
+
