@@ -9,16 +9,26 @@ test('dummy returns one', () => {
 
   const result = listHelper.dummy(blogs)
   assert.strictEqual(result, 1)
+});
+
+test('counts total likes', () => {
+  const result = listHelper.totalLikes(blogs);
+  assert.strictEqual(result, 36);
 })
 
-describe('total likes', () => {
-  test('when list has only one blog, equals the likes of that', () => {
-    const result = listHelper.totalLikes(blogs.slice(0, 1));
-    assert.strictEqual(result, blogs[0].likes);
+describe('most entity', () => {
+  test('find author by amount of likes', () => {
+    const result = listHelper.getMostFavorite(blogs);
+    assert.strictEqual(result.title, blogs[2].title);
   });
 
-  test('count total likes of the list of blogs', () => {
-    const result = listHelper.totalLikes(blogs);
-    assert.strictEqual(result, 36);
+  test('find author who has most blogs', () => {
+    const result = listHelper.getAuthorMostBlogs(blogs);
+    assert.deepEqual(result, {author: 'Robert C. Martin', blogs: 3});
   });
-})
+
+  test('find author who has most blogs', () => {
+    const result = listHelper.getAuthorMostLiked(blogs);
+    assert.deepEqual(result, {author: 'Edsger W. Dijkstra', likes: 17});
+  });
+});
