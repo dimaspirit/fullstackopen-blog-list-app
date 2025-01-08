@@ -1,11 +1,9 @@
 const { test, after, describe, beforeEach } = require('node:test');
 const assert = require('node:assert');
 const mongoose = require('mongoose');
-const supertest = require('supertest');
 const Blog = require('../models/blog');
 
-const app = require('../app');
-const api = supertest(app);
+const api = require('./api_helpers');
 
 const blogsInDb = async () => {
   const blogs = await Blog.find({})
@@ -63,7 +61,7 @@ describe(`API ${BASE_URL}`, () => {
     assert(titles.includes(blogToAdd.title));
   });
 
-  test.only('blog without title is not added', async () => {
+  test('blog without title is not added', async () => {
     const newBlog = Object.assign({}, blogToAdd);
     delete newBlog.title;
 
@@ -77,7 +75,7 @@ describe(`API ${BASE_URL}`, () => {
     assert.strictEqual(notesAtEnd.length, initBlogs.length)
   });
 
-  test.only('blog without url is not added', async () => {
+  test('blog without url is not added', async () => {
     const newBlog = Object.assign({}, blogToAdd);
     delete newBlog.url;
 

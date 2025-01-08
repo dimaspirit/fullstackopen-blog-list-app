@@ -4,19 +4,19 @@ const assert = require('node:assert');
 const { blogs } = require('./list_helper_data');
 const listHelper = require('../utils/list_helper');
 
-test('dummy returns one', () => {
-  const blogs = []
-
-  const result = listHelper.dummy(blogs)
-  assert.strictEqual(result, 1)
-});
-
-test('counts total likes', () => {
-  const result = listHelper.totalLikes(blogs);
-  assert.strictEqual(result, 36);
-})
-
 describe('most entity', () => {
+  test('dummy returns one', () => {
+    const blogs = []
+  
+    const result = listHelper.dummy(blogs)
+    assert.strictEqual(result, 1)
+  });
+  
+  test('counts total likes', () => {
+    const result = listHelper.totalLikes(blogs);
+    assert.strictEqual(result, 36);
+  })
+
   test('find author by amount of likes', () => {
     const result = listHelper.getMostFavorite(blogs);
     assert.strictEqual(result.title, blogs[2].title);
