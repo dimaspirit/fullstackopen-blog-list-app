@@ -7,8 +7,8 @@
     "start": "dotenvx run -f .env.prod --  node index.js",
     "dev": "dotenvx run -f .env -- nodemon index.js",
     "lint": "npx eslint",
-    "test": "dotenvx run -f .env.test -- node --test",
-    "test:dev": "dotenvx run -f .env.test -- node --test --test-only"
+    "test": "dotenvx run -f .env.test -- node --test --test-concurrency=1",
+    "test:dev": "dotenvx run -f .env.test -- node --test --test-only --test-concurrency=1"
   },
   "author": "",
   "license": "ISC",

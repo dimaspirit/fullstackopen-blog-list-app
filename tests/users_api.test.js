@@ -62,6 +62,25 @@ describe('API /api/users', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length);
   });
 
+  test('creation fails with proper statuscode and message if username already taken', async () => {
+    const brokenUser = {
+      username: 'qw',
+      password: 'testpassword',
+    };
+    const usersAtStart = await usersInDb()
+
+    const result = await api
+      .post('/api/users')
+      .send(brokenUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    const usersAtEnd = await usersInDb()
+    assert(result.body.error.includes('username and password must be at least 3 characters long'));
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+  });
+
   after(async () => {
     await mongoose.connection.close();
   });
