@@ -4,6 +4,7 @@ GET http://localhost:3001/api/blogs
 
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: Bearer 
 
 {
   "author": "Wes Bos",
