@@ -10,6 +10,6 @@ Authorization: Bearer
   "author": "Wes Bos",
   "title": "Data URLs and Pool in your URL",
   "url": "https://wesbos.com/pool-in-your-url",
-  "upvotes": 4
+  "likes": 4
 }
 
